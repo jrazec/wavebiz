@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->foreignId('role_id')->nullable()->constrained()->onDelete('set null');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -35,6 +36,32 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique(); // Role name (Admin, Superadmin, Processor, etc.)
+            $table->timestamps();
+        });
+        
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique(); // Permission name (read, write, delete, etc.)
+            $table->timestamps();
+        });
+        
+        Schema::create('role_user', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
+            $table->foreignId('role_id')->constrained()->onDelete('cascade'); 
+            $table->timestamps();
+        });
+        
+        Schema::create('permission_role', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('role_id')->constrained()->onDelete('cascade');
+            $table->foreignId('permission_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+        });
+        
     }
 
     /**
