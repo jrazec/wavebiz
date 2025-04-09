@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
 
 
     protected $routeMiddleware = [
-        'role' => RoleMiddleware::class,
+        'roleName' => RoleMiddleware::class,
     ];
     
 }
