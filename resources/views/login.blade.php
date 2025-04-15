@@ -284,6 +284,7 @@ function loginRecord() {
                     alert('Registration successful');
                   
                 } else {
+                    console.log(response);
                     alert('Registration failed');
                 }
             },

@@ -14,7 +14,10 @@ Route::get('/admin', function () {
 Route::get('/processor', function () {
     return view('processor');
 });
-Route::get('/member', function () {
-    return view('member');
-});
 
+Route::get('/signup',[AuthController::class,'showSignup'])->name('show.signup');
+Route::get('/sign-in',[AuthController::class,'showSignin'])->name('show.signin');
+
+Route::post('/signup',[AuthController::class,'signup'])->name('signup');
+Route::post('/sign-in',[AuthController::class,'signin'])->name('signin');
+Route::post('/logout',[AuthController::class,'logout'])->name('logout');
