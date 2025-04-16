@@ -35,6 +35,7 @@
 
     .btn-primary {
       background-color:rgb(19, 19, 19);
+      border: none;
     }
 
     .btn-primary:hover {

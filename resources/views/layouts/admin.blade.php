@@ -12,7 +12,8 @@
             min-height: 100vh;
         }
         .sidebar {
-            width: 250px;
+            min-width: 250px;
+            height: 100vh;
             background: rgb(16, 12, 4);
             color: white;
         }
@@ -21,78 +22,69 @@
             text-decoration: none;
             display: block;
             padding: 10px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .sidebar a:hover {
-            background-color: #ffe15d;
-            color: rgb(16, 12, 4);
-            transition: ease-in cubic-bezier(0.075, 0.82, 0.165, 1);
+            background-color: #ffe15db7;
+            color: black;
+        }
+
+        .menu {
+            border-radius: 0.25rem;
         }
         .submenu {
             padding-left: 30px;
             font-size: 0.95rem;
+            border-radius: 0.25rem;
         }
         .content {
             flex-grow: 1;
             padding: 20px;
             background-color: #f8f9fa;
+            height: 100vh;
         }
+        .active-menu {
+            background-color: #ffe15d;
+            color: black !important;
+            font-weight: bold;
+            padding-left: 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+     
     </style>
     @yield('styles')
 </head>
 <body>
     <!-- Sidebar -->
 
-    <!--
-    <div class="sidebar d-flex flex-column p-3">
+    <div class="sidebar d-flex flex-column justify-content-between p-3">
         <img src="{{ asset('assets/wavebiz_logo.png') }}" alt="Wavebiz Logo" class="mt-4 mb-4" style="width: 12rem;">
-
-        <a href="#">Home</a>
-         {{-- {{ route('admin.dashboard') }}  --}}
-
-        <a href="#">Products</a>
-        {{-- {{ route('admin.products') }}  --}}
-        <div class="submenu">
-            <a href="#">Categories</a>
+        <div class="flex-grow-1">
+            <a href="/dashboard" class="menu {{ Request::is('dashboard') ? 'active-menu' : '' }}">Home</a>
+        
+            <a href="/products" class="menu {{ Request::is('products') ? 'active-menu' : '' }}">Products</a>
             <div class="submenu">
-                <a href="#">Sub-Categories</a>
+                <a href="#">Categories</a>
+                <div class="submenu">
+                    <a href="#">Sub-Categories</a>
+                </div>
             </div>
+        
+            <a href="/deliveries" class="menu {{ Request::is('deliveries') ? 'active-menu' : '' }}">Deliveries</a>
+        
+            <a href="/members" class="menu {{ Request::is('members') ? 'active-menu' : '' }}">Members</a>
+        
+            <a href="/auditlog" class="menu {{ Request::is('auditlog') ? 'active-menu' : '' }}">Audit Log</a>
+        
+            <a href="/profile" class="menu {{ Request::is('profile') ? 'active-menu' : '' }}">Profile</a>
         </div>
-
-        <a href="#">Deliveries</a>
-        {{-- {{ route('admin.deliveries') }}  --}}
-
-        <a href="#">Members</a>
-        {{-- {{ route('admin.memberlist') }}  --}}
-
-        <a href="#">Audit Log</a>
-        {{-- {{ route('admin.auditlog') }}  --}}
-
-        <a href="#">Profile</a>
-        {{-- {{ route('admin.profile') }}  --}}
-
-    </div>
-    -->
-
-    <div class="sidebar d-flex flex-column p-3">
-        <img src="{{ asset('assets/wavebiz_logo.png') }}" alt="Wavebiz Logo" class="mt-4 mb-4" style="width: 12rem;">
-    
-        <a href="/dashboard" class="{{ Request::is('dashboard') ? 'active-menu' : '' }}">Home</a>
-    
-        <a href="/products" class="{{ Request::is('products') ? 'active-menu' : '' }}">Products</a>
-        <div class="submenu">
-            <a href="#">Categories</a>
-            <div class="submenu">
-                <a href="#">Sub-Categories</a>
-            </div>
+        <div class="d-flex justify-content-center">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-outline-light mt-auto">Logout</button>
+            </form>
         </div>
-    
-        <a href="/deliveries" class="{{ Request::is('deliveries') ? 'active-menu' : '' }}">Deliveries</a>
-    
-        <a href="/members" class="{{ Request::is('members') ? 'active-menu' : '' }}">Members</a>
-    
-        <a href="/auditlog" class="{{ Request::is('auditlog') ? 'active-menu' : '' }}">Audit Log</a>
-    
-        <a href="/profile" class="{{ Request::is('profile') ? 'active-menu' : '' }}">Profile</a>
     </div>
 
     <!-- Content -->

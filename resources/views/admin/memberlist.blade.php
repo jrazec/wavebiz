@@ -4,7 +4,7 @@
 @section('page-title', 'Welcome, Admin')
 
 @section('content')
-  <<h3 class="mt-5 mb-3">Memberss</h3>
+<h2 class="text-2xl font-bold mb-4">Members</h2>
   <table class="table table-striped table-sm" id="auditLogsTable">
       <thead class="table-dark">
           <tr>

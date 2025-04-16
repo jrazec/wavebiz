@@ -3,12 +3,11 @@
 @section('title', 'Dashboard')
 @section('page-title', 'Welcome, Admin')
 
+{{-- dashboard style --}}
 @section('styles')
 <style>
   .container {
-    max-width: 1140px;
-    max-height: 80vh;
-    margin: auto;
+    max-height: 85vh;
     overflow-y: auto;
   }
 
@@ -17,6 +16,9 @@
     height: auto !important;
   }
 </style>
+@endsection
+
+{{-- dashboard scripts --}}
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -47,7 +49,7 @@
             }
         }
     }
-});
+  });
 
 const membersCtx = document.getElementById('membersChart').getContext('2d');
 const membersChart = new Chart(membersCtx, {
@@ -110,9 +112,10 @@ const deliveryCtx = document.getElementById('deliveryChart').getContext('2d');
 </script>
 @endsection
 
+{{-- dashboard content --}}
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Dashboard</h1>
-<div id="landing-page" class="mb-4">
+<h2 class="text-2xl font-bold mb-4">Dashboard</h2>
+<div id="landing-page">
     <div class="container">
         <div class="row g-4">
             <div class="col-md-12">
