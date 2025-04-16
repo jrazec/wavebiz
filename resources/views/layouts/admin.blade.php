@@ -13,7 +13,7 @@
         }
         .sidebar {
             width: 250px;
-            background-color: #343a40;
+            background: rgb(16, 12, 4);
             color: white;
         }
         .sidebar a {
@@ -23,7 +23,9 @@
             padding: 10px 20px;
         }
         .sidebar a:hover {
-            background-color: #495057;
+            background-color: #ffe15d;
+            color: rgb(16, 12, 4);
+            transition: ease-in cubic-bezier(0.075, 0.82, 0.165, 1);
         }
         .submenu {
             padding-left: 30px;
@@ -40,21 +42,57 @@
 <body>
     <!-- Sidebar -->
 
+    <!--
     <div class="sidebar d-flex flex-column p-3">
-        <h4 class="text-center py-3">Admin Panel</h4>
+        <img src="{{ asset('assets/wavebiz_logo.png') }}" alt="Wavebiz Logo" class="mt-4 mb-4" style="width: 12rem;">
+
         <a href="#">Home</a>
          {{-- {{ route('admin.dashboard') }}  --}}
+
         <a href="#">Products</a>
+        {{-- {{ route('admin.products') }}  --}}
         <div class="submenu">
             <a href="#">Categories</a>
             <div class="submenu">
                 <a href="#">Sub-Categories</a>
             </div>
         </div>
+
         <a href="#">Deliveries</a>
+        {{-- {{ route('admin.deliveries') }}  --}}
+
         <a href="#">Members</a>
+        {{-- {{ route('admin.memberlist') }}  --}}
+
         <a href="#">Audit Log</a>
+        {{-- {{ route('admin.auditlog') }}  --}}
+
         <a href="#">Profile</a>
+        {{-- {{ route('admin.profile') }}  --}}
+
+    </div>
+    -->
+
+    <div class="sidebar d-flex flex-column p-3">
+        <img src="{{ asset('assets/wavebiz_logo.png') }}" alt="Wavebiz Logo" class="mt-4 mb-4" style="width: 12rem;">
+    
+        <a href="/dashboard" class="{{ Request::is('dashboard') ? 'active-menu' : '' }}">Home</a>
+    
+        <a href="/products" class="{{ Request::is('products') ? 'active-menu' : '' }}">Products</a>
+        <div class="submenu">
+            <a href="#">Categories</a>
+            <div class="submenu">
+                <a href="#">Sub-Categories</a>
+            </div>
+        </div>
+    
+        <a href="/deliveries" class="{{ Request::is('deliveries') ? 'active-menu' : '' }}">Deliveries</a>
+    
+        <a href="/members" class="{{ Request::is('members') ? 'active-menu' : '' }}">Members</a>
+    
+        <a href="/auditlog" class="{{ Request::is('auditlog') ? 'active-menu' : '' }}">Audit Log</a>
+    
+        <a href="/profile" class="{{ Request::is('profile') ? 'active-menu' : '' }}">Profile</a>
     </div>
 
     <!-- Content -->

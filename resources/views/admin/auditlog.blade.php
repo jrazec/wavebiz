@@ -3,6 +3,7 @@
 @section('title', 'Dashboard')
 @section('page-title', 'Welcome, Admin')
 
+{{-- audit log content --}}
 @section('content')
 <h3 class="mt-5 mb-3">Audit Logs</h3>
 <table class="table table-striped table-sm" id="auditLogsTable">
@@ -18,6 +19,9 @@
     </thead>
     <tbody></tbody>
 </table>
+@endsection
+
+{{-- audit log scripts --}}
 @section('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', () => {
